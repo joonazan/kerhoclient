@@ -42,7 +42,9 @@ func main() {
 			fmt.Sscan(viesti, &command, &nimi, &x, &y)
 
 			maailma.Lock()
-			maailma.pelaajanPaikat[nimi] = vec2.Vector{x, y}
+			if nimi != omaNimi {
+				maailma.pelaajanPaikat[nimi] = vec2.Vector{x, y}
+			}
 			maailma.Unlock()
 		}
 	}()
